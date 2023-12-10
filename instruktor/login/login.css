@@ -1,0 +1,121 @@
+body{
+    background-image: url('https://wallpapercave.com/wp/wp8413230.jpg');
+    display: grid;
+
+}
+
+#nav{
+    background-color:  rgba(54, 54, 105, 0.59);
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 1500px;
+    height: 70px;
+}
+
+h1{
+    position: absolute;
+    left: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color:  rgb(232, 232, 53);
+}
+
+
+#container{
+    position: absolute;
+    right: 100px;
+    top: 100px;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    opacity: 80%;
+}
+
+#slika{
+    width: 190px;
+    height: 140px;
+    position: absolute;
+    left: 150px;
+    top: 70px;
+}
+
+#data{
+    position: absolute;
+    top: 250px;
+    left: 50px;
+}
+
+#p{
+    background-color:rgba(54, 54, 105, 0.59) ;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+    width: 400px;
+    height: 25px;
+    color: white;
+    font-weight: bold;
+
+
+}
+
+#logout{
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
+    font-size: 20px;
+}
+
+#slika2{
+    width: 220px;
+    height: 130px;
+    position: absolute;
+    left: 150px;
+    top: 23px;
+}
+
+h2{
+    position: absolute;
+    left: 167px;
+    color: rgba(54, 54, 105, 0.59);
+}
+
+#container2{
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    opacity: 80%;
+}
+
+#data2{
+    position: absolute;
+    top: 250px;
+    left: 50px;
+}
+
+#p2{
+    background-color:rgba(54, 54, 105, 0.59) ;
+    display: flex;
+    justify-content: center;
+    padding: 3px;
+    width: 400px;
+    height: 25px;
+    color: white;
+    font-weight: bold;
+
+
+}
+
+#login{
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
+    font-size: 20px;
+}
+
+.input{
+    width: 400px;
+}
+
