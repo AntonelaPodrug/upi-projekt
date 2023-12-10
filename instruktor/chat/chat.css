@@ -1,0 +1,150 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('https://wallpapercave.com/wp/wp8413230.jpg');
+  }
+  
+  
+  #profile-button {
+    margin-bottom: 10px;
+    color: white;
+    width: 100%;
+    padding: 10px;
+    background-color: #007acc;
+  }
+  
+  #main-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  #conversation-list {
+    margin-right: 20px;
+  }
+  
+  #conversations {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  #conversations li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    margin-bottom: 5px;
+  }
+  
+  #conversations li:hover {
+    background-color: #ddd;
+  }
+  
+  #chat-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    flex-grow: 1;
+  }
+  
+  #chat-box {
+    width: 100%;
+    height: 500px;
+    overflow-y: scroll;
+    padding: 20px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+  }
+  
+  .message {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .message strong {
+    margin-right: 10px;
+  }
+  
+  .message.sent {
+    justify-content: flex-end;
+  }
+  
+  .message.sent strong {
+    margin-right: 0;
+    margin-left: 10px;
+  }
+  
+  .message.sent .bubble {
+    background-color: #007acc;
+    color: #ffffff;
+    border-radius: 12px 12px 0 12px;
+    padding: 10px;
+    margin-top: 5px;
+    max-width: 70%;
+  }
+  
+  .message.received {
+    background-color: #e6e6e6;
+    padding: 10px;
+    border-radius: 12px 12px 12px 0;
+    position: relative;
+  }
+  
+  .message.received::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    border-style: solid;
+    border-width: 10px;
+    border-color: transparent #e6e6e6 transparent transparent;
+  }
+  
+  #message-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-top: 1px solid #ccc;
+    outline: none;
+    margin: 0 10px;
+  }
+  
+  #send-button, #yes-button, #no-button {
+    width: 33%;
+    padding: 10px;
+    background-color: #007acc;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 0 12px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #send-button:hover, #yes-button:hover, #no-button:hover {
+    background-color: #00568c;
+  }
+  
+  #conversation-slider {
+    width: 80%;
+    margin: 0 10px;
+  }
+  
+  #conversation-label {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+  }
+  
