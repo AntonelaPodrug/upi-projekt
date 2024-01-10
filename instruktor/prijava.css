@@ -1,0 +1,81 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background: url('https://www.agbt.org/wp-content/uploads/2020/06/banner-gm-apply-min.png') center center/cover no-repeat;
+}
+
+nav {
+  background-color: rgba(54, 54, 105, 0.59);
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  height: 100px;
+  color: rgba(173, 173, 196, 0.821);
+  font-size: 30px;
+  padding-top: 30px;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 30%;
+  height: 55%;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  font-size: 30px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+#email, #psw {
+  font-size: 25px; 
+}
+
+.btn-default {
+  background-color: rgba(54, 54, 105, 0.59);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 15px 30px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 25px;
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-top: 20px;
+}
+
+.btn-default:hover {
+  background-color: rgba(54, 54, 105, 0.59);
+}

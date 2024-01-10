@@ -1,6 +1,6 @@
 body{
     background-color: lightgray;
-    background-image: url('https://www.splitshire.com/wp-content/uploads/2014/11/SplitShire-03692-1800x1200-uai-1800x1012.jpg');
+    background: url('https://www.splitshire.com/wp-content/uploads/2014/11/SplitShire-03692-1800x1200-uai-1800x1012.jpg') center center/cover no-repeat;
 }
 #pocetna{
     display: grid;

@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>
+            Profile 
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="profile.css">
+      </head>
+      <body>
+
+        <nav> MY PROFILE </nav>
+      
+      <div class="container">
+        <h2>PROFILE</h2>
+        <button onclick="Logout();" style="float: right;">Logout</button>
+        <hr>
+        <h3>Welcome</h3>
+        <h4 id="displayname">Name: <script>document.write(localStorage.getItem('name'));</script></h4>
+        <h4 id="displaysurname">surname: <script>document.write(localStorage.getItem('surname'));</script></h4>
+        <h4 id="displayemail">email: <script>document.write(localStorage.getItem('email'));</script></h4>
+        <h4 id="displayuserType">User Type: <script>document.write(localStorage.getItem('userType'));</script></h4>
+
+        <h4 id="displayimeinstruktora">Ime instruktora: <script>document.write(localStorage.getItem('kandidatimeinstruktora') || 'Not Set');</script></h4>
+        <h4 id="displaykategorija">Kategorija:<script>document.write(localStorage.getItem('kandidatkategorija') || 'Not Set');</script></h4>
+      </div>
+    <!--   <div>
+        <br>
+        <br>
+        <button onclick=""> Uredi profil</button>
+        <h4>Instruktor:</h4>                                     OVO KO U INSTRUKTORA NAPRAVIT
+        <h4>KAT</h4>
+        <h4>Sat vožnje:</h4>
+        <h4>Ocjena:</h4>
+      </div> -->
+      <button onclick="displayEditForm()">Uredi profil</button>
+
+      <div id="editForm" style="display: none;">
+
+        <label for="kategorija">Kategorija:</label>
+        <input type="text" class="form-control" id="kategorija" placeholder="Unesite kategoriju">
+        <button onclick="spremiFormu()">Spremi</button>
+      </div>
+
+      </body>
+      <script>
+        
+        let name=localStorage.getItem('name')?localStorage.getItem('name'):''
+        let surname=localStorage.getItem('surname')?localStorage.getItem('surname'):''
+        let userType = localStorage.getItem("userType")?localStorage.getItem('userType'):''
+
+        console.log("User Type Set:", userType);
+
+        console.log(name);
+        console.log(surname);
+        if(name=='')
+        {
+          alert('U need to login first');
+          window.location.href="prijava.html";
+        } 
+        
+        function displayEditForm() {
+          document.getElementById("editForm").style.display = "block";
+        }
+
+        function spremiFormu() {
+          let kategorija = document.getElementById("kategorija").value;
+          localStorage.setItem("kandidatkategorija", kategorija);
+          document.getElementById("displaykategorija").innerText = `Kategorija: ${kategorija}`;
+      
+          document.getElementById("editForm").style.display = "none";
+        }
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let driverEmail = urlParams.get('email');
+    
+        // Add logic to fetch and display driver details
+        let user_records = JSON.parse(localStorage.getItem("users")) || [];
+        let driverData = user_records.find((user) => user.email === driverEmail);
+    
+        if (driverData) {
+          document.getElementById("displayname").innerText =`Ime: ${driverData.name}`;
+          document.getElementById("displaysurname").innerText = `Prezime: ${driverData.surname}`;
+          document.getElementById("displayemail").innerText = `Email: ${driverData.email}`;
+          document.getElementById("displayuserType").innerText = `Vrsta korisnika: ${driverData.userType}`;
+          
+          // Add more details as needed
+        } else {
+          alert(`Driver not found with email: ${driverEmail}`);
+          // Redirect to some error page or handle appropriately
+        }
+      
+        
+        function Logout()
+        {
+          localStorage.removeItem('name');
+          localStorage.removeItem('email');
+          localStorage.removeItem('userType')
+          window.location.href="prijava.html";
+        }
+  </script>
+      </html>
+      
+      
