@@ -12,7 +12,7 @@ body {
 }
 
 nav {
-    background-color:#ffc107;
+    background-color: #ffc107;
     opacity: 0.7;
     text-align: center;
     padding: 10px 0;
@@ -25,15 +25,15 @@ nav {
 
 .container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
-    background-color: rgba(224, 224, 224, 0.9); 
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(224, 224, 224, 0.9);
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
-    padding: 40px; 
-    width: 40%; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 40%;
     height: 78%;
-    margin-top: 35px;
+    margin-top: 100px; /* Promijenjeno */
     margin-left: 50px;
     box-sizing: border-box;
     text-align: center;
@@ -46,8 +46,8 @@ h2, h3, h4 {
 }
 
 button {
-    background-color: #ffc107; 
-    color: #343a40; 
+    background-color: #ffc107;
+    color: #343a40;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
@@ -59,56 +59,69 @@ button:hover {
     background-color: #ffca28; /* Svijetlija žuta nijansa */
 }
 
-
 .checked {
     color: orange;
-  }
+}
 
-  #botuni, #editForm, #editForm2 {
+#botuni, #editForm, #editForm2, #editForm3 {
     position: fixed;
-    top: 30px;
+    top: 10px;
     right: 100px;
-    
-  }
-  
-  #botuni button, #editForm button, #editForm2 button {
-    margin-bottom: 10px; 
-  }
-  
-  #editForm, #editForm2 {
-    margin-top: 60px; 
-  }
+}
 
-  #botuni button.uredi,
+#botuni button,
+#editForm button,
+#editForm2 button,
+#editForm3 button {
+    margin-bottom: 10px;
+}
+
+#editForm, #editForm2, #editForm3 {
+    margin-top: 60px;
+}
+
+#botuni button.uredi,
 #botuni button.dodaj {
-  margin-right: 50px; 
+    margin-right: 50px;
 }
 
 #editForm {
     margin-top: 70px;
-    margin-right: 250px; 
-  }
+    margin-right: 250px;
+}
 
-  #editForm label {
-    color: white; 
-  }
+#editForm label {
+    color: white;
+}
 
-  #editForm button {
-    margin-top: 10px; 
+#editForm button {
+    margin-top: 10px;
+}
 
-  }
-
-  #editForm2 button {
-    margin-top: 10px; 
+#editForm2 button {
+    margin-top: 50px;
     position: fixed;
     right: 210px;
-  }
+}
 
-  #editForm2 select{
+#editForm2 select {
     margin-top: 35px;
     margin-left: 40px;
     margin-right: 40px;
+}
 
-  }
+#editForm3 button {
+    margin-top: 10px;
+}
 
-  
+#editForm3 input {
+    margin-top: 30px;
+}
+
+#drivingLogButton, #urediProfilButton {
+    position: fixed;
+    top: 30px;
+    right: 200px;
+    margin-bottom: 10px;
+}
+
