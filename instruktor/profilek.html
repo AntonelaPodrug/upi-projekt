@@ -1,107 +1,97 @@
 <html>
-    <head>
-        <title>
-            Profile 
-        </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="profile.css">
-      </head>
-      <body>
-
-        <nav> MY PROFILE </nav>
-      
-      <div class="container">
-        <h2>PROFILE</h2>
-        <button onclick="Logout();" style="float: right;">Logout</button>
-        <hr>
-        <h3>Welcome</h3>
-        <h4 id="displayname">Name: <script>document.write(localStorage.getItem('name'));</script></h4>
-        <h4 id="displaysurname">surname: <script>document.write(localStorage.getItem('surname'));</script></h4>
-        <h4 id="displayemail">email: <script>document.write(localStorage.getItem('email'));</script></h4>
-        <h4 id="displayuserType">User Type: <script>document.write(localStorage.getItem('userType'));</script></h4>
-
-        <h4 id="displayimeinstruktora">Ime instruktora: <script>document.write(localStorage.getItem('kandidatimeinstruktora') || 'Not Set');</script></h4>
-        <h4 id="displaykategorija">Kategorija:<script>document.write(localStorage.getItem('kandidatkategorija') || 'Not Set');</script></h4>
-      </div>
-    <!--   <div>
-        <br>
-        <br>
-        <button onclick=""> Uredi profil</button>
-        <h4>Instruktor:</h4>                                     OVO KO U INSTRUKTORA NAPRAVIT
-        <h4>KAT</h4>
-        <h4>Sat vožnje:</h4>
-        <h4>Ocjena:</h4>
-      </div> -->
-      <button onclick="displayEditForm()">Uredi profil</button>
-
-      <div id="editForm" style="display: none;">
-
-        <label for="kategorija">Kategorija:</label>
+  <head>
+    <title>Profile</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="profilek.css">
+  </head>
+  <body>
+    <nav> MY PROFILE </nav>
+    <div class="container">
+      <h2>PROFILE</h2>
+      <button onclick="Logout();" style="position: fixed; top: 280px; right: 1060px;">Logout</button> <br>
+      <button onclick="redirectToDrivingLog()" id="drivingLogButton" >Driving Log</button><br>
+      <button onclick="displayEditForm()" id="urediProfilButton" style="position: fixed; top: 30px; right: 70px;">Uredi profil</button>
+      <div id="editForm3" style="display: none; position: fixed; top: 40px; right: 20px;">
+        <label for="kategorija" style="color: white;">Kategorija:</label>
         <input type="text" class="form-control" id="kategorija" placeholder="Unesite kategoriju">
         <button onclick="spremiFormu()">Spremi</button>
       </div>
+      <h3>Welcome</h3>
+      <h4 id="displayname">IME: <script>document.write(localStorage.getItem('name'));</script></h4>
+      <h4 id="displaysurname">PREZIME: <script>document.write(localStorage.getItem('surname'));</script></h4>
+      <h4 id="displayemail">EMAIL: <script>document.write(localStorage.getItem('email'));</script></h4>
+      <h4 id="displayuserType">TIP KORISNIKA: <script>document.write(localStorage.getItem('userType'));</script></h4>
+      <h4 id="displayimeinstruktora">Ime instruktora:</h4>
+      <h4 id="displaykategorija">KATEGORIJA:<script>document.write(localStorage.getItem('kandidatkategorija') || 'Not Set');</script></h4>
+    </div>
+    <h4>SATI VOŽNJE:</h4>
+  </body>
+  <script>
+    function redirectToDrivingLog() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const driverEmail = urlParams.get('email');
 
-      </body>
-      <script>
-        
-        let name=localStorage.getItem('name')?localStorage.getItem('name'):''
-        let surname=localStorage.getItem('surname')?localStorage.getItem('surname'):''
-        let userType = localStorage.getItem("userType")?localStorage.getItem('userType'):''
+      if (!driverEmail) {
+        alert('Driver email not found in URL parameters.');
+        return;
+      }
 
-        console.log("User Type Set:", userType);
+      localStorage.setItem('driverEmail', driverEmail);
+      window.location.href = 'sati.html';
+    }
 
-        console.log(name);
-        console.log(surname);
-        if(name=='')
-        {
-          alert('U need to login first');
-          window.location.href="prijava.html";
-        } 
-        
-        function displayEditForm() {
-          document.getElementById("editForm").style.display = "block";
-        }
+    function displayEditForm() {
+      document.getElementById("editForm3").style.display = "block";
+    }
 
-        function spremiFormu() {
-          let kategorija = document.getElementById("kategorija").value;
-          localStorage.setItem("kandidatkategorija", kategorija);
-          document.getElementById("displaykategorija").innerText = `Kategorija: ${kategorija}`;
-      
-          document.getElementById("editForm").style.display = "none";
-        }
+    function spremiFormu() {
+      let kategorija = document.getElementById("kategorija").value;
+      localStorage.setItem("kandidatkategorija", kategorija);
+      document.getElementById("displaykategorija").innerText = `Kategorija: ${kategorija}`;
+      document.getElementById("editForm3").style.display = "none";
+    }
 
-        let urlParams = new URLSearchParams(window.location.search);
-        let driverEmail = urlParams.get('email');
-    
-        // Add logic to fetch and display driver details
-        let user_records = JSON.parse(localStorage.getItem("users")) || [];
-        let driverData = user_records.find((user) => user.email === driverEmail);
-    
-        if (driverData) {
-          document.getElementById("displayname").innerText =`Ime: ${driverData.name}`;
-          document.getElementById("displaysurname").innerText = `Prezime: ${driverData.surname}`;
-          document.getElementById("displayemail").innerText = `Email: ${driverData.email}`;
-          document.getElementById("displayuserType").innerText = `Vrsta korisnika: ${driverData.userType}`;
-          
-          // Add more details as needed
-        } else {
-          alert(`Driver not found with email: ${driverEmail}`);
-          // Redirect to some error page or handle appropriately
-        }
-      
-        
-        function Logout()
-        {
-          localStorage.removeItem('name');
-          localStorage.removeItem('email');
-          localStorage.removeItem('userType')
-          window.location.href="prijava.html";
-        }
+    let name = localStorage.getItem('name') ? localStorage.getItem('name') : '';
+    let surname = localStorage.getItem('surname') ? localStorage.getItem('surname') : '';
+    let userType = localStorage.getItem("userType") ? localStorage.getItem('userType') : '';
+
+    console.log("User Type Set:", userType);
+    console.log(name);
+    console.log(surname);
+
+    if (name == '') {
+      alert('U need to login first');
+      window.location.href = "prijava.html";
+    }
+
+    function Logout() {
+      localStorage.removeItem('name');
+      localStorage.removeItem('email');
+      localStorage.removeItem('userType')
+      window.location.href = "prijava.html";
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+const candidateEmail = urlParams.get('email');
+
+// Dohvatite podatke o kandidatu iz localStorage
+let user_records = JSON.parse(localStorage.getItem("users")) || [];
+let candidateData = user_records.find((user) => user.email === candidateEmail);
+
+// Prikaz podataka o kandidatu na stranici
+if (candidateData) {
+  document.getElementById("displayname").innerText = `Ime: ${candidateData.name}`;
+  document.getElementById("displaysurname").innerText = `Prezime: ${candidateData.surname}`;
+  document.getElementById("displayemail").innerText = `Email: ${candidateData.email}`;
+  document.getElementById("displayuserType").innerText = `Tip korisnika: ${candidateData.userType}`;
+  document.getElementById("displayimeinstruktora").innerText = `Ime instruktora: ${candidateData.imeinstruktora || 'Nije postavljeno'}`;
+  document.getElementById("displaykategorija").innerText = `Kategorija: ${candidateData.kandidatkategorija || 'Nije postavljeno'}`;
+} else {
+  alert("Podaci o kandidatu nisu pronađeni.");
+}
   </script>
-      </html>
-      
-      
+</html>

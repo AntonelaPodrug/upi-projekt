@@ -1,0 +1,51 @@
+<body class="">
+  <header>
+    <h1>30-Hour Driving Log</h1>
+    <div id="driverName"></div>
+  </header>
+  <link rel="stylesheet" href="sati.css">
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Log #</th>
+          <th>Date</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Hours Driven</th>
+          <th>Comments</th>
+        </tr>
+      </thead>
+      <!-- Add the tbody element here -->
+      <tbody id="logBody">
+        <!-- Log entries will be added here dynamically -->
+      </tbody>
+    </table>
+
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" required>
+
+      <label for="startTime">Start Time:</label>
+      <input type="time" id="startTime" required>
+
+      <label for="endTime">End Time:</label>
+      <input type="time" id="endTime" required>
+
+      <label for="hoursDriven">Hours Driven:</label>
+      <input type="number" id="hoursDriven" min="0" required>
+
+      <label for="comments">Comments:</label>
+      <input type="text" id="comments">
+
+      <!-- Add a class to the button to disable it for drivers -->
+      <button class="add-entry-btn" onclick="addLogEntry()">Add Entry</button>
+      <button onclick="goBack()">Go Back</button>
+
+
+<!-- Add this script block at the end of your document -->
+
+  
+</body>
+<script src="sati.js"></script>
+</html>

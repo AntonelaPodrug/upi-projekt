@@ -68,6 +68,7 @@ if(user_records.some((v)=>{return v.email==email && v.psw==psw && v.userType=="i
  localStorage.setItem('surname',current_user.surname);
  localStorage.setItem('userType',current_user.userType);
   window.location.href="profilei.html"
+  
 } else if(user_records.some((v)=>{return v.email==email && v.psw==psw && v.userType=="kandidat"})){
   alert("Login Pass");
   let current_user=user_records.filter((v)=>{return v.email==email && v.psw==psw})[0]
@@ -75,7 +76,7 @@ if(user_records.some((v)=>{return v.email==email && v.psw==psw && v.userType=="i
  localStorage.setItem('email',current_user.email);
  localStorage.setItem('surname',current_user.surname);
  localStorage.setItem('userType',current_user.userType);
-  window.location.href="profilek.html"
+ window.location.href=`profilek.html?email=${encodeURIComponent(current_user.email)}`;
 }
 else
 {
