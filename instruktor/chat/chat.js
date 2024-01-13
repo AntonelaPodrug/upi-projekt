@@ -34,21 +34,22 @@ function sendNo() {
 }
 
 function loadConversation() {
+  var chatHeader = document.getElementById('chat-header');
+  var conversationName = document.getElementById('conversation-name');
+  
   var slider = document.getElementById('conversation-slider');
   var label = document.getElementById('conversation-label');
   
-  // Increment conversationCount to create a new chat box
   conversationCount++;
 
   label.textContent = 'Conversation ' + conversationCount;
   var chatBox = document.getElementById('chat-box');
 
-  // Clear the chat box when loading a new conversation
   chatBox.innerHTML = '';
 
-  // Simulate an initial received message from "Instruktor"
   var initialMessage = document.createElement('div');
   initialMessage.className = 'message received';
   initialMessage.innerHTML = '<strong>Instruktor:</strong> Peti sat vožnje, 12.01.2024 u 14:00 na Poljudu?';
   chatBox.appendChild(initialMessage);
 }
+

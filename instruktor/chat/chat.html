@@ -10,16 +10,16 @@
 
   <div id="main-container">
     <div id="conversation-list">
-      <button id="profile-button">My Profile</button> <br>
-      <label for="conversation-slider">Select Conversation:</label>
+      <button id="profile-button" onClick="location.href='../profilek.html'">Profil</button> <br>
       <ul id="conversations">
         <li onclick="loadConversation(1)">Conversation 1</li>
-        <li onclick="loadConversation(2)">Conversation 2</li>
-        <li onclick="loadConversation(3)">Conversation 3</li>
       </ul>
     </div>
 
     <div id="chat-container">
+      <div id="chat-header">
+        <h2 id="conversation-name">Instruktor</h2>
+      </div>
       <div id="chat-box">
         <div class="message received">
           <strong>Instruktor:</strong> Peti sat vožnje, 12.01.2024 u 14:00 na Poljudu?
