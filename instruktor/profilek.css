@@ -45,8 +45,15 @@ h2, h3, h4 {
     font-size: 20px;
 }
 
+.fixed-button {
+    position: fixed;
+    top: 280px;
+    right: 20px;
+}
+
 button {
     background-color: #ffc107;
+    position: fixed;
     color: #343a40;
     border: none;
     border-radius: 5px;

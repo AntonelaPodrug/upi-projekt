@@ -65,7 +65,7 @@
       <div id="botuni">
         <button class="uredi" onclick="displayEditForm()">Uredi profil</button>
         <button class="dodaj" onclick="displayEditForm2()">Dodaj kandidata</button>
-        <button class="button" onClick="location.href='chat/chat-ins.html'" >Chat</button>
+        <!-- <button class="button" onClick="location.href='chat/chat.html'" >Chat</button> -->
       </div>
       
       
@@ -130,6 +130,18 @@
           let vrstavozila = document.getElementById("vrstavozila").value;
           let iskustvo = document.getElementById("iskustvo").value;
           let dostupnost = document.getElementById("dostupnost").value;
+
+          // Provjera da li su sva polja popunjena
+          if (!regoznaka || !vrstavozila || !iskustvo || !dostupnost) {
+            alert("Molimo popunite sva polja");
+            return;
+          }
+      
+          // Provjera da li je iskustvo brojčani tip
+          if (isNaN(iskustvo)) {
+            alert("Iskustvo mora biti broj");
+            return;
+          }
       
           localStorage.setItem("instructorregoznaka", regoznaka);
           document.getElementById("displayregoznaka").innerText = `Registracijska oznaka: ${regoznaka}`;

@@ -10,7 +10,7 @@
 
   <div id="main-container">
     <div id="conversation-list">
-      <button id="profile-button" onClick="location.href='../profilek.html'">Profil</button> <br>
+      <button id="profile-button" onclick="goBack()">Profil</button> <br>
       <ul id="conversations">
         <li onclick="loadConversation(1)">Conversation 1</li>
       </ul>
@@ -21,14 +21,19 @@
         <h2 id="conversation-name">Instruktor</h2>
       </div>
       <div id="chat-box">
-        <div class="message received">
+       <!--  <div class="message received">
           <strong>Instruktor:</strong> Peti sat vožnje, 12.01.2024 u 14:00 na Poljudu?
-        </div>
+        </div> -->
+        <script>
+          let chatHistory = JSON.parse(localStorage.getItem("chatHistory")) || [];
+          document.getElementById("chat-box").innerHTML = chatHistory.join("");
+        </script>
       </div>
       <input type="text" id="message-input" placeholder="Type a message...">
       <button id="send-button" onclick="sendMessage()">Send</button>
       <button id="yes-button" onclick="sendYes()">Yes</button>
       <button id="no-button" onclick="sendNo()">No</button>
+      
     </div>
   </div>
 
@@ -36,3 +41,4 @@
 
 </body>
 </html>
+
