@@ -11,6 +11,16 @@ body {
     min-height: 100vh;
     background-image: url('https://wallpapercave.com/wp/wp8413230.jpg');
 }
+.btn-default {
+    background-color:rgba(57, 57, 238, 0.818);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
 
 #chat-container {
     background-color: #ffffff;

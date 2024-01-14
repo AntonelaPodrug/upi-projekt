@@ -12,10 +12,11 @@
     <nav> MY PROFILE </nav>
     <div class="container">
       <h2>PROFILE</h2>
-      <button onclick="Logout();" style="position: fixed; top: 280px; right: 1060px;">Logout</button> <br>
+      <button onclick="Logout();" style="position: fixed; top: 280px; right: 987px;">Logout</button> <br>
+
       <button onclick="redirectToDrivingLog()" id="drivingLogButton" style="position: fixed; top: 30px; right: 280px;">Driving Log</button><br>
       <button onclick="displayEditForm()" id="urediProfilButton" style="position: fixed; top: 30px; right: 154px;">Uredi profil</button>
-      <button onClick="location.href='chat/chat.html'" style="position: fixed; top: 30px; right: 70px;" >Chat</button>
+      <button onClick="redirectToChat()" style="position: fixed; top: 30px; right: 70px;" >Chat</button>
       <div id="editForm3" style="display: none; position: fixed; top: 40px; right: 20px;">
         <label for="kategorija" style="color: white;">Kategorija:</label>
         <input type="text" class="form-control" id="kategorija" placeholder="Unesite kategoriju">
@@ -29,7 +30,6 @@
       <h4 id="displayimeinstruktora">Ime instruktora:</h4>
       <h4 id="displaykategorija">KATEGORIJA:<script>document.write(localStorage.getItem('kandidatkategorija') || 'Not Set');</script></h4>
     </div>
-    <h4>SATI VOŽNJE:</h4>
   </body>
   <script>
     function redirectToDrivingLog() {
@@ -44,6 +44,18 @@
       localStorage.setItem('driverEmail', driverEmail);
       window.location.href = 'sati.html';
     }
+    function redirectToChat() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const driverEmail = urlParams.get('email');
+      
+      if (!driverEmail) {
+        alert('User email not found in localStorage.');
+        return;
+      }
+  
+      window.location.href = `chat/chat.html?email=${driverEmail}`;
+    }
+  
 
     function displayEditForm() {
       document.getElementById("editForm3").style.display = "block";
@@ -51,10 +63,33 @@
 
     function spremiFormu() {
       let kategorija = document.getElementById("kategorija").value;
+
+      // Provjera da li je kategorija unesena
+      if (!kategorija) {
+        alert("Molimo unesite kategoriju");
+        return;
+      }
+
+      // Provjera da li je kategorija string
+      if (typeof kategorija !== 'string') {
+        alert("Kategorija mora biti string");
+        return;
+      }
       localStorage.setItem("kandidatkategorija", kategorija);
       document.getElementById("displaykategorija").innerText = `Kategorija: ${kategorija}`;
       document.getElementById("editForm3").style.display = "none";
+    
+      // Dohvatite podatke o kandidatu iz localStorage
+      let user_records = JSON.parse(localStorage.getItem("users")) || [];
+      let candidateData = user_records.find((user) => user.email === candidateEmail);
+    
+      // Update kandidatkategorija in candidateData
+      candidateData.kandidatkategorija = kategorija;
+    
+      // Update localStorage with the modified user_records
+      localStorage.setItem("users", JSON.stringify(user_records));
     }
+    
 
     let name = localStorage.getItem('name') ? localStorage.getItem('name') : '';
     let surname = localStorage.getItem('surname') ? localStorage.getItem('surname') : '';
@@ -82,6 +117,7 @@ const candidateEmail = urlParams.get('email');
 // Dohvatite podatke o kandidatu iz localStorage
 let user_records = JSON.parse(localStorage.getItem("users")) || [];
 let candidateData = user_records.find((user) => user.email === candidateEmail);
+
 
 // Prikaz podataka o kandidatu na stranici
 if (candidateData) {
